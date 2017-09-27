@@ -721,10 +721,7 @@ public class DatDisplayer extends Composite {
 				
 				try {
 					
-				IDataHolder dh1 = LoaderFactory.getData(ip.getText());
-				
-				Tree tree = dh1.getTree();			
-				FittingParametersInputReader.geometricalParametersReaderFromNexus(tree, ssp.getGm());
+				FittingParametersInputReader.geometricalParametersReaderFromNexus(ip.getText(), ssp.getGm());
 				
 				rsw.getParamField().setUpdateOn(false);
 				rsw.getParamField().updateDisplayFromGm(ssp.getGm());
@@ -744,6 +741,12 @@ public class DatDisplayer extends Composite {
 				
 			}
 		});
+		
+		
+		Button batchTest = new Button(parameterFiles, SWT.PUSH);
+		batchTest.setText("Batch Test");
+		batchTest.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		batchTest.setEnabled(false);
 		
 	}
 
@@ -1001,9 +1004,7 @@ public class DatDisplayer extends Composite {
 			if(add){
 				output.add(m);
 			}
-			
 		}
-
 		
 		return output;
 	}
@@ -1037,7 +1038,6 @@ public class DatDisplayer extends Composite {
 				paramFilesChecked.add(ra);
 			}
 		}
-		
 	}
 
 	public String getOption() {
